@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Tournaments</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of tournaments" (click)="itemTapped(item)">
+      <ion-avatar item-start>
+        <img [src]="item.image">
+      </ion-avatar>
+      <h2>{{item.title}}</h2>
+      <h3>{{item.date}}</h3>
+      <p>{{item.description}}</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>
