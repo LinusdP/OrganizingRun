@@ -1,0 +1,27 @@
+timer {
+  .timer-button-group {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .timer-text {
+    @import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+    font-family: 'Roboto Mono', monospace;
+    font-size: 5rem !important;
+    color: #488aff;
+  }
+
+  span.timer-text {
+    font-size: 4rem !important;;
+  }
+
+  .timer-button {
+    height: 1em !important;
+    padding: 0;
+  }
+
+  .no-bottom-border.item .item-inner {
+      border-bottom: none !important;
+  }
+}
