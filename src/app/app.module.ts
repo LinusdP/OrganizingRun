@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TournamentPage } from '../pages/tournament/tournament';
 import { TournamentDetailPage } from '../pages/tournament-detail/tournament-detail';
 import { TimerComponent } from '../components/timer/timer';
+import { TimingStructurePage } from '../pages/timing-structure/timing-structure';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,7 +18,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TournamentPage,
     TournamentDetailPage,
-    TimerComponent
+    TimerComponent,
+    TimingStructurePage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     TournamentPage,
-    TournamentDetailPage
+    TournamentDetailPage,
+    TimingStructurePage
   ],
   providers: [
     StatusBar,

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { TournamentPage } from '../pages/tournament/tournament';
+import { TimingStructurePage } from '../pages/timing-structure/timing-structure';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +25,8 @@ export class MyApp {
       { title: 'Home', icon: 'home', component: HomePage },
       { title: 'Tournaments', icon: 'trophy', component: TournamentPage },
       { title: 'Players', icon: 'people', component: TournamentPage },
-      { title: 'Regions', icon: 'pin', component: TournamentPage }
+      { title: 'Regions', icon: 'pin', component: TournamentPage },
+      { title: 'Timing Structure', icon: 'paper', component: TimingStructurePage }
     ];
 
   }
