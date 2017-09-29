@@ -1,24 +1,23 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the TimingStructurePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { CorpTab} from './corp-tab';
 
 @Component({
-  selector: 'page-timing-structure',
-  templateUrl: 'timing-structure.html',
+  templateUrl: 'timing-structure.html'
 })
 export class TimingStructurePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  corptab: any;
+  runnertab: any;
+  runtab: any;
+
+  constructor() {
+    this.corptab = CorpTab;
+    this.runnertab = CorpTab;
+    this.runtab = CorpTab;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TimingStructurePage');
   }
-
 }
