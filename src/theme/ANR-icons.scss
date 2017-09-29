@@ -1,0 +1,66 @@
+@font-face {
+  font-family: 'ANR-icons';
+  src:  url('../assets/fonts/ANR-icons.eot?yl7a09');
+  src:  url('../assets/fonts/ANR-icons.eot?yl7a09#iefix') format('embedded-opentype'),
+    url('../assets/fonts/ANR-icons.ttf?yl7a09') format('truetype'),
+    url('../assets/fonts/ANR-icons.woff?yl7a09') format('woff'),
+    url('../assets/fonts/ANR-icons.svg?yl7a09#ANR-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="anr-"], [class*="anr-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'ANR-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin makeIcon($arg, $val) {
+   .anr-#{$arg}:before ,
+   .ion-ios-anr-#{$arg}:before ,
+   .ion-ios-anr-#{$arg}-outline:before ,
+   .ion-md-anr-#{$arg}:before ,
+   .ion-md-anr-#{$arg}-outline:before {
+     content: $val; font-size: 18px;
+   }
+}
+
+@include makeIcon(MU, '\e900');
+@include makeIcon(MU2, '\e901');
+@include makeIcon(MU3, '\e902');
+@include makeIcon(agenda, '\e903');
+@include makeIcon(Anarch, '\e904');
+@include makeIcon(Click, '\e905');
+@include makeIcon(Creation-and-Control, '\e906');
+@include makeIcon(Credit, '\e907');
+@include makeIcon(Criminal, '\e908');
+@include makeIcon(Genesis-Cycle, '\e909');
+@include makeIcon(haas-bioroid, '\e90a');
+@include makeIcon(Honor-and-Profit, '\e90b');
+@include makeIcon(Jinteki-Simple, '\e90c');
+@include makeIcon(Jinteki, '\e90d');
+@include makeIcon(link, '\e90e');
+@include makeIcon(link-half-bottom, '\e90f');
+@include makeIcon(link-half-top, '\e910');
+@include makeIcon(Lunar-Cycle, '\e911');
+@include makeIcon(MU4, '\e912');
+@include makeIcon(NBN, '\e913');
+@include makeIcon(Order-and-Chaos, '\e914');
+@include makeIcon(recurring-credit, '\e915');
+@include makeIcon(Rez, '\e916');
+@include makeIcon(Shaper, '\e917');
+@include makeIcon(Shaper-smooth, '\e918');
+@include makeIcon(Spin-Cycle, '\e919');
+@include makeIcon(Subroutine, '\e91a');
+@include makeIcon(Trash, '\e91b');
+@include makeIcon(Weyland-Consortium, '\e91c');
+@include makeIcon(Paid-ability, '\e984');
