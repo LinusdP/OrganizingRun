@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Timing structure</ion-title>
+  </ion-navbar>
+</ion-header>
+
+  <ion-content>
+  <ol>
+    <li><strong>Initiation</strong>: The Runner initiates a run and declares the attacked server.
+      <ol>
+        <li>The Runner gains 1 <ion-icon name="anr-Credit"></ion-icon> to spend during the run for each bad publicity the Corp has.</li>
+        <li>If the attacked server has one or more pieces of ice protecting it, go to [2].</li>
+        <li>If the attacked server does not have ice protecting it, go to [4].</li>
+      </ol>
+    </li>
+    <li><strong>Approach Ice</strong>: The Runner approaches the next piece of ice protecting the attacked server, going from outermost to 
+      innermost. If a piece of ice is installed protecting a server during a run in a position that has already been passed, the Runner does
+      not approach it. If a piece of ice is uninstalled while it is being approached, the ice is immediately passed and the run continues
+      after any currently open paid ability windows close.
+      <ol>
+        <li><ion-icon name="anr-Paid-ability" style="color:green"></ion-icon> (paid abilities can be used)</li>
+        <li>If this is not the first piece of ice approached this run, the Runner can choose whether or not to jack out.
+            <ul>
+              <li>If the Runner jacks out, go to [7].</li>
+              <li>Otherwise, continue to [2.3].</li>
+            </ul>
+        </li>
+        <li>>Approached ice can be rezzed, <ion-icon name="anr-Paid-ability" style="color:green"></ion-icon> (paid abilities can be used), <ion-icon name="anr-Rez" style="color:blue"></ion-icon> (non-ice cards can be rezzed)</li>
+        <li>  Players check to see if the approached ice is rezzed:
+            <ul>
+              <li>If the approached ice is rezzed, continue to [3].</li>
+              <li>If the approached ice is unrezzed, the approach ends. Go to [4].</li>
+            </ul>
+        </li>
+      </ol>
+    </li>
+    <li><strong>Encounter ice</strong>: The Runner the encounters piece of ice. (“When encountered...” conditionals meet their trigger conditions.) If a piece of ice is
+      uninstalled while it is being encountered, the ice is immediately passed and the run continues after any currently open paid ability windows close.
+      <ol>
+        <li>The Runner can interact with the encountered ice. <ion-icon name="anr-Paid-ability" style="color:green"></ion-icon> (paid abilities can be used)
+          <ul>
+            <li>If the run ends, the encounter also ends. Go to [7].</li>
+            <li>Otherwise, the encounter ends. Continue to [4].</li>
+          </ul>
+        </li>
+        <li>Resolve all subroutines not broken on the encountered ice.
+          <ul>
+            <li>This is the only point in the run during which the Runner can break subroutines. If [3.1] is never reached, such as when bypassing a piece of ice,
+              then no subroutines on the ice are broken.</li>
+          </ul>
+        </li>
+      </ol>
+    </li>
+    <li><strong>Pass</strong>: The Runner passes the ice. (“When passed...” conditionals meet their trigger conditions.)
+          <ul>
+            <li>If there is another piece of ice protecting the server in a position more inward than the ice passed, go to [2].</li>
+            <li>If there are no more pieces of ice protecting the server in positions more inward than the ice passed, continue to [5].</li>
+          </ul>
+    </li>
+    <li><strong>Approach Server</strong>: The Runner approaches the attacked server.
+      <ol>
+        <li><ion-icon name="anr-Paid-ability" style="color:green"></ion-icon> (paid abilities can be used)</li>
+        <li>The Runner chooses whether or not to jack out.
+          <ul>
+            <li>If the Runner jacks out, go to [7].</li>
+            <li>Otherwise, continue to [5.3].</li>
+          </ul>
+        </li>
+        <li><ion-icon name="anr-Paid-ability" style="color:green"></ion-icon> (paid abilities can be used), <ion-icon name="anr-Rez" style="color:blue"></ion-icon> (non-ice cards can be rezzed)</li>
+        <li>The run is successful (“If successful...” effects resolve, then “When successful...” conditionals meet their trigger conditions.)
+          <ul>
+            <li>“If successful...” effects resolve only if the attacked server is still the server specified in the effect.</li>
+            <li>If the ability with the “if successful” effect does not specify a server, the ability resolves even if the attacked server changed during the run.</li>
+          </ul>
+        </li>
+        <li>Access cards. Determine the number of cards to be accessed. For each card accessed:
+          <ol>
+            <li>Access that card (“When accessed...” conditionals meet their trigger conditions.)</li>
+            <li>The Runner may trash that card by paying the trash cost, if applicable, or with abilities.</li>
+            <li>If the that card is an agenda, the Runner must steal it.</li>
+            <li>If that card is not trashed or stolen, set it aside.</li>
+          </ol>
+        </li>
+        <li>All accessed cards that were set aside are returned to the server in their previous states. Continue to [6].</li>
+      </ol>
+    </li>
+    <li><strong>The run ends</strong>: The Runner loses any unspent bad publicity credits. The runends. (“When the run ends...” conditionals meet their trigger conditions.)</li>
+    <li><strong>The run ends unsuccessfully</strong>: The Runner loses any unspent bad publicity credits. The run ends and is unsuccessful.
+      (“When unsuccessful...” and “When the run ends...” conditionals meet their trigger conditions.)</li>
+  </ol>
+</ion-content>

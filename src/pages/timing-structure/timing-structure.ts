@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { CorpTab } from './corp-tab';
 import { RunnerTab } from './runner-tab';
+import { RunTab } from './run-tab';
 
 @Component({
   templateUrl: 'timing-structure.html'
@@ -15,7 +16,7 @@ export class TimingStructurePage {
   constructor() {
     this.corptab = CorpTab;
     this.runnertab = RunnerTab;
-    this.runtab = CorpTab;
+    this.runtab = RunTab;
   }
 
   ionViewDidLoad() {
