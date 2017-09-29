@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { CorpTab} from './corp-tab';
+import { CorpTab } from './corp-tab';
+import { RunnerTab } from './runner-tab';
 
 @Component({
   templateUrl: 'timing-structure.html'
@@ -13,7 +14,7 @@ export class TimingStructurePage {
 
   constructor() {
     this.corptab = CorpTab;
-    this.runnertab = CorpTab;
+    this.runnertab = RunnerTab;
     this.runtab = CorpTab;
   }
 
