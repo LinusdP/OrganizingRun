@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TournamentPage } from '../pages/tournament/tournament';
+import { PlayersPage } from '../pages/players/players';
 import { TournamentDetailPage } from '../pages/tournament-detail/tournament-detail';
 import { TimerComponent } from '../components/timer/timer';
 import { TimingStructurePage } from '../pages/timing-structure/timing-structure';
@@ -14,12 +16,15 @@ import { RunTab } from '../pages/timing-structure/run-tab';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CardDataProvider } from '../providers/card-data';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     TournamentPage,
+    PlayersPage,
     TournamentDetailPage,
     TimerComponent,
     TimingStructurePage,
@@ -29,6 +34,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -36,6 +42,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     TournamentPage,
+    PlayersPage,
     TournamentDetailPage,
     TimingStructurePage,
     CorpTab,
@@ -45,7 +52,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CardDataProvider
   ]
 })
 export class AppModule {}
