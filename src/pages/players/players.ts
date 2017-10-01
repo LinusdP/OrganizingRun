@@ -16,8 +16,14 @@ import 'rxjs/add/operator/map';
   templateUrl: 'players.html',
 })
 export class PlayersPage {
+
+  allCards: any;
+  tournamentPlayers: any;
+  toggleNew: any;
+  newRow: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public cardService: CardDataProvider) {
-    this.allCards =[];
+    this.allCards = [];
     this.tournamentPlayers = [
         { firstName: 'Roger', lastName: 'Tónlist' },
     ];
@@ -41,6 +47,6 @@ export class PlayersPage {
 
   addNewRow(): void{
     this.tournamentPlayers.push(this.newRow);
-    this.toogleNew = false;
+    this.toggleNew = false;
   }
 }
