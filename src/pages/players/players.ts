@@ -17,7 +17,14 @@ import 'rxjs/add/operator/map';
 })
 export class PlayersPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public cardService: CardDataProvider) {
-  this.allCards =[];
+    this.allCards =[];
+    this.tournamentPlayers = [
+        { firstName: 'Roger', lastName: 'Tónlist' },
+    ];
+    this.toggleNew = false;
+    this.newRow = [
+        { firstName: 'First Name', lastName: 'Last Name' },
+    ];
   }
 
   ionViewDidLoad() {
@@ -30,5 +37,10 @@ export class PlayersPage {
       console.log("I have gotten cards (player.ts)")
       console.log(data);
     });
+  }
+
+  addNewRow(): void{
+    this.tournamentPlayers.push(this.newRow);
+    this.toogleNew = false;
   }
 }

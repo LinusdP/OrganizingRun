@@ -26,12 +26,12 @@
     <ion-list-header>Turneringsdeltagare</ion-list-header>
 
     <ion-grid>
-      <ion-row>
+      <ion-row *ngFor="let tPlayer of tournamentPlayers">
         <ion-col>
-          <ion-input placeholder="First name"></ion-input>
+          <ion-input value="{{tPlayer.firstName}}"></ion-input>
         </ion-col>
         <ion-col>
-          <ion-input placeholder="Last name"></ion-input>
+          <ion-input value="{{tPlayer.lastName}}"></ion-input>
         </ion-col>
         <ion-col>
           <!--<ion-label>Gender</ion-label>-->
@@ -73,7 +73,6 @@
             <ion-option value="74">Rielle "Kit" Peddler: Transhuman</ion-option>
             <ion-option value="75">The Professor: Keeper of Knowledge</ion-option>
             <ion-option value="76">Sunny Lebeau: Security Specialist</ion-option>
-
           </ion-select>
         </ion-col>
         <ion-col>
@@ -81,51 +80,149 @@
           <ion-select [(ngModel)]="corp" interface="popover">
             <ion-option value="0" selected="true">- Corp -</ion-option>
             <ion-option value="1">Cerebral Imaging: Infinite Frontiers</ion-option>
-<ion-option value="2">Custom Biotics: Engineered for Success</ion-option>
-<ion-option value="3">Cybernetics Division: Humanity Upgraded</ion-option>
-<ion-option value="4">Haas-Bioroid: Architects of Tomorrow</ion-option>
-<ion-option value="5">Haas-Bioroid: Engineering the Future</ion-option>
-<ion-option value="6">Haas-Bioroid: Stronger Together</ion-option>
-<ion-option value="7">NEXT Design: Guarding the Net</ion-option>
-<ion-option value="8">Seidr Laboratories: Destiny Defined</ion-option>
-<ion-option value="9">The Foundry: Refining the Process</ion-option>
-<ion-option value="10">AgInfusion: New Miracles for a New World</ion-option>
-<ion-option value="11">Chronos Protocol: Selective Mind-mapping</ion-option>
-<ion-option value="12">Harmony Medtech: Biomedical Pioneer</ion-option>
-<ion-option value="13">Industrial Genomics: Growing Solutions</ion-option>
-<ion-option value="14">Jinteki Biotech: Life Imagined</ion-option>
-<ion-option value="15">Jinteki: Personal Evolution</ion-option>
-<ion-option value="16">Jinteki: Potential Unleashed</ion-option>
-<ion-option value="17">Jinteki: Replicating Perfection</ion-option>
-<ion-option value="18">Nisei Division: The Next Generation</ion-option>
-<ion-option value="19">Pālanā Foods: Sustainable Growth</ion-option>
-<ion-option value="20">Synthetic Systems: The World Re-imagined</ion-option>
-<ion-option value="21">Tennin Institute: The Secrets Within</ion-option>
-<ion-option value="22">Haarpsichord Studios: Entertainment Unleashed</ion-option>
-<ion-option value="23">Harishchandra Ent.: Where You're the Star</ion-option>
-<ion-option value="24">NBN: Controlling the Message</ion-option>
-<ion-option value="25">NBN: Making News</ion-option>
-<ion-option value="26">NBN: The World is Yours*</ion-option>
-<ion-option value="27">Near-Earth Hub: Broadcast Center</ion-option>
-<ion-option value="28">New Angeles Sol: Your News</ion-option>
-<ion-option value="29">Spark Agency: Worldswide Reach</ion-option>
-<ion-option value="30">SYNC: Everything, Everywhere</ion-option>
-<ion-option value="31">Argus Security: Protection Guaranteed</ion-option>
-<ion-option value="32">Blue Sun: Powering the Future</ion-option>
-<ion-option value="33">Gagarin Deep Space: Expanding the Horizon</ion-option>
-<ion-option value="34">GRNDL: Power Unleashed</ion-option>
-<ion-option value="35">Jemison Astronautics: Sacrifice. Audacity. Success.</ion-option>
-<ion-option value="36">Skorpios Defense Systems: Persuasive Power</ion-option>
-<ion-option value="37">Titan Transnational: Investing In Your Future</ion-option>
-<ion-option value="38">Weyland Consortium: Because We Built It</ion-option>
-<ion-option value="39">Weyland Consortium: Builder of Nations</ion-option>
-<ion-option value="40">Weyland Consortium: Building a Better World</ion-option>
-
-
+            <ion-option value="2">Custom Biotics: Engineered for Success</ion-option>
+            <ion-option value="3">Cybernetics Division: Humanity Upgraded</ion-option>
+            <ion-option value="4">Haas-Bioroid: Architects of Tomorrow</ion-option>
+            <ion-option value="5">Haas-Bioroid: Engineering the Future</ion-option>
+            <ion-option value="6">Haas-Bioroid: Stronger Together</ion-option>
+            <ion-option value="7">NEXT Design: Guarding the Net</ion-option>
+            <ion-option value="8">Seidr Laboratories: Destiny Defined</ion-option>
+            <ion-option value="9">The Foundry: Refining the Process</ion-option>
+            <ion-option value="10">AgInfusion: New Miracles for a New World</ion-option>
+            <ion-option value="11">Chronos Protocol: Selective Mind-mapping</ion-option>
+            <ion-option value="12">Harmony Medtech: Biomedical Pioneer</ion-option>
+            <ion-option value="13">Industrial Genomics: Growing Solutions</ion-option>
+            <ion-option value="14">Jinteki Biotech: Life Imagined</ion-option>
+            <ion-option value="15">Jinteki: Personal Evolution</ion-option>
+            <ion-option value="16">Jinteki: Potential Unleashed</ion-option>
+            <ion-option value="17">Jinteki: Replicating Perfection</ion-option>
+            <ion-option value="18">Nisei Division: The Next Generation</ion-option>
+            <ion-option value="19">Pālanā Foods: Sustainable Growth</ion-option>
+            <ion-option value="20">Synthetic Systems: The World Re-imagined</ion-option>
+            <ion-option value="21">Tennin Institute: The Secrets Within</ion-option>
+            <ion-option value="22">Haarpsichord Studios: Entertainment Unleashed</ion-option>
+            <ion-option value="23">Harishchandra Ent.: Where You're the Star</ion-option>
+            <ion-option value="24">NBN: Controlling the Message</ion-option>
+            <ion-option value="25">NBN: Making News</ion-option>
+            <ion-option value="26">NBN: The World is Yours*</ion-option>
+            <ion-option value="27">Near-Earth Hub: Broadcast Center</ion-option>
+            <ion-option value="28">New Angeles Sol: Your News</ion-option>
+            <ion-option value="29">Spark Agency: Worldswide Reach</ion-option>
+            <ion-option value="30">SYNC: Everything, Everywhere</ion-option>
+            <ion-option value="31">Argus Security: Protection Guaranteed</ion-option>
+            <ion-option value="32">Blue Sun: Powering the Future</ion-option>
+            <ion-option value="33">Gagarin Deep Space: Expanding the Horizon</ion-option>
+            <ion-option value="34">GRNDL: Power Unleashed</ion-option>
+            <ion-option value="35">Jemison Astronautics: Sacrifice. Audacity. Success.</ion-option>
+            <ion-option value="36">Skorpios Defense Systems: Persuasive Power</ion-option>
+            <ion-option value="37">Titan Transnational: Investing In Your Future</ion-option>
+            <ion-option value="38">Weyland Consortium: Because We Built It</ion-option>
+            <ion-option value="39">Weyland Consortium: Builder of Nations</ion-option>
+            <ion-option value="40">Weyland Consortium: Building a Better World</ion-option>
           </ion-select>
         </ion-col>
-
       </ion-row>
+      <ion-row *ngIf='toggleNew'>
+        <ion-col>
+          <ion-input placeholder="First Name"></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input placeholder="Last Name"></ion-input>
+        </ion-col>
+        <ion-col>
+          <!--<ion-label>Gender</ion-label>-->
+          <ion-select [(ngModel)]="runner" interface="popover">
+            <ion-option value="0" selected="true">- Runner -</ion-option>
+            <ion-option value="41">Adam: Compulsive Hacker</ion-option>
+            <ion-option value="42">Alice Merchant: Clan Agitator</ion-option>
+            <ion-option value="43">Edward Kim: Humanity's Hammer</ion-option>
+            <ion-option value="44">MaxX: Maximum Punk Rock</ion-option>
+            <ion-option value="45">Noise: Hacker Extraordinaire</ion-option>
+            <ion-option value="46">Null: Whistleblower</ion-option>
+            <ion-option value="47">Omar Keung: Conspiracy Theorist</ion-option>
+            <ion-option value="48">Quetzal: Free Spirit</ion-option>
+            <ion-option value="49">Reina Roja: Freedom Fighter</ion-option>
+            <ion-option value="50">Valencia Estevez: The Angel of Cayambe</ion-option>
+            <ion-option value="51">Whizzard: Master Gamer</ion-option>
+            <ion-option value="52">Apex: Invasive Predator</ion-option>
+            <ion-option value="53">Andromeda: Dispossessed Ristie</ion-option>
+            <ion-option value="54">Armand "Geist" Walker: Tech Lord</ion-option>
+            <ion-option value="55">Boris "Syfr" Kovac: Crafty Veteran</ion-option>
+            <ion-option value="56">Gabriel Santiago: Consummate Professional</ion-option>
+            <ion-option value="57">Iain Stirling: Retired Spook</ion-option>
+            <ion-option value="58">Ken "Express" Tenma: Disappeared Clone</ion-option>
+            <ion-option value="59">Khan: Savvy Skiptracer</ion-option>
+            <ion-option value="60">Laramy Fisk: Savvy Investor</ion-option>
+            <ion-option value="61">Leela Patel: Trained Pragmatist</ion-option>
+            <ion-option value="62">Los: Data Hijacker</ion-option>
+            <ion-option value="63">Nero Severn: Information Broker</ion-option>
+            <ion-option value="64">Silhouette: Stealth Operative</ion-option>
+            <ion-option value="65">Steve Cambridge: Master Grifter</ion-option>
+            <ion-option value="66">Ayla "Bios" Rahim: Simulant Specialist</ion-option>
+            <ion-option value="67">Chaos Theory: Wünderkind</ion-option>
+            <ion-option value="68">Ele "Smoke" Scovak: Cynosure of the Net</ion-option>
+            <ion-option value="69">Exile: Streethawk</ion-option>
+            <ion-option value="70">Hayley Kaplan: Universal Scholar</ion-option>
+            <ion-option value="71">Jesminder Sareen: Girl Behind the Curtain</ion-option>
+            <ion-option value="72">Kate "Mac" McCaffrey: Digital Tinker</ion-option>
+            <ion-option value="73">Nasir Meidan: Cyber Explorer</ion-option>
+            <ion-option value="74">Rielle "Kit" Peddler: Transhuman</ion-option>
+            <ion-option value="75">The Professor: Keeper of Knowledge</ion-option>
+            <ion-option value="76">Sunny Lebeau: Security Specialist</ion-option>
+          </ion-select>
+        </ion-col>
+        <ion-col>
+          <!--<ion-label>Gender</ion-label>-->
+          <ion-select [(ngModel)]="corp" interface="popover">
+            <ion-option value="0" selected="true">- Corp -</ion-option>
+            <ion-option value="1">Cerebral Imaging: Infinite Frontiers</ion-option>
+            <ion-option value="2">Custom Biotics: Engineered for Success</ion-option>
+            <ion-option value="3">Cybernetics Division: Humanity Upgraded</ion-option>
+            <ion-option value="4">Haas-Bioroid: Architects of Tomorrow</ion-option>
+            <ion-option value="5">Haas-Bioroid: Engineering the Future</ion-option>
+            <ion-option value="6">Haas-Bioroid: Stronger Together</ion-option>
+            <ion-option value="7">NEXT Design: Guarding the Net</ion-option>
+            <ion-option value="8">Seidr Laboratories: Destiny Defined</ion-option>
+            <ion-option value="9">The Foundry: Refining the Process</ion-option>
+            <ion-option value="10">AgInfusion: New Miracles for a New World</ion-option>
+            <ion-option value="11">Chronos Protocol: Selective Mind-mapping</ion-option>
+            <ion-option value="12">Harmony Medtech: Biomedical Pioneer</ion-option>
+            <ion-option value="13">Industrial Genomics: Growing Solutions</ion-option>
+            <ion-option value="14">Jinteki Biotech: Life Imagined</ion-option>
+            <ion-option value="15">Jinteki: Personal Evolution</ion-option>
+            <ion-option value="16">Jinteki: Potential Unleashed</ion-option>
+            <ion-option value="17">Jinteki: Replicating Perfection</ion-option>
+            <ion-option value="18">Nisei Division: The Next Generation</ion-option>
+            <ion-option value="19">Pālanā Foods: Sustainable Growth</ion-option>
+            <ion-option value="20">Synthetic Systems: The World Re-imagined</ion-option>
+            <ion-option value="21">Tennin Institute: The Secrets Within</ion-option>
+            <ion-option value="22">Haarpsichord Studios: Entertainment Unleashed</ion-option>
+            <ion-option value="23">Harishchandra Ent.: Where You're the Star</ion-option>
+            <ion-option value="24">NBN: Controlling the Message</ion-option>
+            <ion-option value="25">NBN: Making News</ion-option>
+            <ion-option value="26">NBN: The World is Yours*</ion-option>
+            <ion-option value="27">Near-Earth Hub: Broadcast Center</ion-option>
+            <ion-option value="28">New Angeles Sol: Your News</ion-option>
+            <ion-option value="29">Spark Agency: Worldswide Reach</ion-option>
+            <ion-option value="30">SYNC: Everything, Everywhere</ion-option>
+            <ion-option value="31">Argus Security: Protection Guaranteed</ion-option>
+            <ion-option value="32">Blue Sun: Powering the Future</ion-option>
+            <ion-option value="33">Gagarin Deep Space: Expanding the Horizon</ion-option>
+            <ion-option value="34">GRNDL: Power Unleashed</ion-option>
+            <ion-option value="35">Jemison Astronautics: Sacrifice. Audacity. Success.</ion-option>
+            <ion-option value="36">Skorpios Defense Systems: Persuasive Power</ion-option>
+            <ion-option value="37">Titan Transnational: Investing In Your Future</ion-option>
+            <ion-option value="38">Weyland Consortium: Because We Built It</ion-option>
+            <ion-option value="39">Weyland Consortium: Builder of Nations</ion-option>
+            <ion-option value="40">Weyland Consortium: Building a Better World</ion-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+
     </ion-grid>
+    <button ion-button (click)="toggleNew == true" (click)='addNewRow()'>
+      <ion-icon name="add"></ion-icon>
+    </button>
   </ion-list>
+
 </ion-content>
