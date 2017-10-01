@@ -14,6 +14,7 @@ import 'rxjs/add/operator/map';
 @Component({
   selector: 'page-players',
   templateUrl: 'players.html',
+  providers: [CardDataProvider]
 })
 export class PlayersPage {
 
@@ -23,7 +24,6 @@ export class PlayersPage {
   newRow: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public cardService: CardDataProvider) {
-    this.allCards = [];
     this.tournamentPlayers = [
         { firstName: 'Roger', lastName: 'Tónlist' },
     ];
@@ -38,11 +38,12 @@ export class PlayersPage {
   }
 
   loadAllCards(){
-    this.cardService.getCardData().then(data => {
-      this.allCards = data;
-      console.log("I have gotten cards (player.ts)")
-      console.log(data);
-    });
+    this.cardService.getCardData()
+      .then(data => {
+        this.allCards = data;
+        console.log("I have gotten cards (player.ts)")
+        console.log(this.allCards);
+      });
   }
 
   addNewRow(): void{
