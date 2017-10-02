@@ -17,6 +17,7 @@ import { RunTab } from '../pages/timing-structure/run-tab';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CardDataProvider } from '../providers/card-data';
+import { NrEventProvider } from '../providers/nr-event/nr-event';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { CardDataProvider } from '../providers/card-data';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CardDataProvider
+    CardDataProvider,
+    NrEventProvider
   ]
 })
 export class AppModule {}

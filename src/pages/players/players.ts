@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { CardDataProvider } from '../../providers/card-data';
+//import { NRCard } from '../../providers/nrcard';
 
 import 'rxjs/add/operator/map';
 
@@ -20,17 +21,14 @@ export class PlayersPage {
 
   allCards: any;
   tournamentPlayers: any;
-  toggleNew: any;
+  toggleNew: boolean;
   newRow: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public cardService: CardDataProvider) {
-    this.tournamentPlayers = [
-        { firstName: 'Roger', lastName: 'Tónlist' },
-    ];
+
+    this.tournamentPlayers = [{ firstName: 'Roger', lastName: 'Tónlist' }];
     this.toggleNew = false;
-    this.newRow = [
-        { firstName: 'First Name', lastName: 'Last Name' },
-    ];
+    this.newRow = [{ firstName: 'First Name', lastName: 'Last Name' }];
   }
 
   ionViewDidLoad() {
