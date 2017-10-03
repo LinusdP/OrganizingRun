@@ -32,11 +32,12 @@ export class PlayersPage {
   }
 
   ionViewDidLoad() {
+    this.loadAllCards();
     console.log('ionViewDidLoad PlayersPage');
   }
 
   loadAllCards(){
-    this.cardService.getCardData()
+    this.cardService.allCards()
       .then(data => {
         this.allCards = data;
         console.log("I have gotten cards (player.ts)")
