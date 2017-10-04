@@ -29,24 +29,23 @@
             <ion-input type="text" value="{{tPlayer.nickName}}" placeholder="Nickname"></ion-input>
         </ion-col>
         <ion-col col-3>
-            <ion-select #R [(ngModel)]="tPlayer.runnerID" class="identity-select" interface="popover" placeholder="- Runner -">
+            <ion-select [(ngModel)]="tPlayer.runnerID" class="identity-select" interface="popover" placeholder="- Runner -">
               <ion-option [value]="identity.code" *ngFor="let identity of cardService.getRunnerIdentities()">{{identity.title}}</ion-option>
             </ion-select>
         </ion-col>
         <ion-col col-3>
-            <ion-select class="identity-select" interface="popover" placeholder="- Corp -">
+            <ion-select [(ngModel)]="tPlayer.corpID" class="identity-select" interface="popover" placeholder="- Corp -">
               <ion-option [value]="identity.code" *ngFor="let identity of cardService.getCorpIdentities()">{{identity.title}}</ion-option>
             </ion-select>
         </ion-col>
         <ion-col col-1>
-            <button ion-button round color="danger" (click)=""><ion-icon name="trash"></ion-icon></button>
+            <button ion-button round color="danger" (click)="deletePlayer(tPlayer)"><ion-icon name="trash"></ion-icon></button>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col col-12><button ion-button color="secondary" (click)='addNewRow()'><ion-icon name="add"></ion-icon></button></ion-col>
+      </ion-row>
     </ion-grid>
-
-    <button ion-button (click)="toggleNew == true" (click)='addNewRow()'>
-      <ion-icon name="add"></ion-icon>
-    </button>
   </ion-list>
 
 </ion-content>

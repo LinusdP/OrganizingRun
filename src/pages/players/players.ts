@@ -25,8 +25,8 @@ export class PlayersPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public cardService: CardDataProvider) {
 
-    this.tournamentPlayers = [{ firstName: 'Roger', lastName: 'Tónlist', nickName: "aglet", runnerID: "01001", corpID: "" }];
-    this.newPlayer = { firstName: '', lastName: '', nickName: "", runnerID: "", corpID: "" };
+    this.tournamentPlayers = [{id: "2", firstName: 'Roger', lastName: 'Tónlist', nickName: "aglet", runnerID: "01001", corpID: "01067" }];
+    this.newPlayer = {id: "", firstName: '', lastName: '', nickName: "", runnerID: "", corpID: "" };
   }
 
   ionViewDidLoad() {
@@ -46,6 +46,13 @@ export class PlayersPage {
 
   addNewRow(): void{
     this.tournamentPlayers.push(this.newPlayer);
+  }
+
+  deletePlayer(item){
+    var index = this.tournamentPlayers.indexOf(item, 0);
+    if (index > -1) {
+       this.tournamentPlayers.splice(index, 1);
+    }
   }
 
   runnerSelected(text){
