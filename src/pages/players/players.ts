@@ -21,14 +21,12 @@ export class PlayersPage {
 
   allCards: any;
   tournamentPlayers: any;
-  toggleNew: boolean;
-  newRow: any;
+  newPlayer: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public cardService: CardDataProvider) {
 
-    this.tournamentPlayers = [{ firstName: 'Roger', lastName: 'Tónlist' }];
-    this.toggleNew = false;
-    this.newRow = [{ firstName: 'First Name', lastName: 'Last Name' }];
+    this.tournamentPlayers = [{ firstName: 'Roger', lastName: 'Tónlist', nickName: "aglet", runnerID: "01001", corpID: "" }];
+    this.newPlayer = { firstName: '', lastName: '', nickName: "", runnerID: "", corpID: "" };
   }
 
   ionViewDidLoad() {
@@ -42,11 +40,15 @@ export class PlayersPage {
         this.allCards = data;
         console.log("I have gotten cards (player.ts)")
         console.log(this.allCards);
+        console.log(this.cardService.getRunnerIdentities());
       });
   }
 
   addNewRow(): void{
-    this.tournamentPlayers.push(this.newRow);
-    this.toggleNew = false;
+    this.tournamentPlayers.push(this.newPlayer);
+  }
+
+  runnerSelected(text){
+    console.log(text);
   }
 }

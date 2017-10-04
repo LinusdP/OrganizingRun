@@ -58,7 +58,8 @@ export class CardDataProvider {
    
         resolve(this.cards);
 
-        //Filter out identities and store separately in runner or corp array
+        //Filter out identities and store separately in runner or corp array.
+        //Leave out draft cards
         this.runner_identities = this.cards.filter(
           card => card.type_code == "identity" && card.side_code == "runner" && card.pack_code != "draft");
         this.corp_identities = this.cards.filter(
