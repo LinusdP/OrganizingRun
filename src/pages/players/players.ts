@@ -44,7 +44,7 @@ export class PlayersPage {
       });
   }
 
-  addNewRow(): void{
+  addPlayer(): void{
     this.tournamentPlayers.push(new Player);
   }
 
