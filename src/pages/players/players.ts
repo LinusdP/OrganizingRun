@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CardDataProvider } from '../../providers/card-data';
 //import { NRCard } from '../../providers/nrcard';
-
 import 'rxjs/add/operator/map';
+
+import{ Player } from './player';
 
 /**
  * Generated class for the PlayersPage page.
@@ -21,12 +22,11 @@ export class PlayersPage {
 
   allCards: any;
   tournamentPlayers: any;
-  newPlayer: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public cardService: CardDataProvider) {
 
+    //TODO: read data from provider (move to ionViewDidLoad)
     this.tournamentPlayers = [{id: "2", firstName: 'Roger', lastName: 'Tónlist', nickName: "aglet", runnerID: "01001", corpID: "01067" }];
-    this.newPlayer = {id: "", firstName: '', lastName: '', nickName: "", runnerID: "", corpID: "" };
   }
 
   ionViewDidLoad() {
@@ -45,7 +45,7 @@ export class PlayersPage {
   }
 
   addNewRow(): void{
-    this.tournamentPlayers.push(this.newPlayer);
+    this.tournamentPlayers.push(new Player);
   }
 
   deletePlayer(item){
