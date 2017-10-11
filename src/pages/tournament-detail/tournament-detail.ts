@@ -30,6 +30,7 @@ export class TournamentDetailPage {
   section: string = "players";
   allCards: any;
   tournamentPlayers: any;
+  timerSeconds: number = 3600;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public cardService: CardDataProvider) {
     // We should be here by navigation with a tournamentId
@@ -61,6 +62,10 @@ export class TournamentDetailPage {
     if (index > -1) {
        this.tournamentPlayers.splice(index, 1);
     }
+  }
+
+  updateTime(seconds: number) {
+    this.timerSeconds = seconds;
   }
 
 }

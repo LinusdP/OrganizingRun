@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 
 import {ITimer} from './itimer';
@@ -16,6 +16,8 @@ import {ITimer} from './itimer';
 export class TimerComponent {
 
     @Input() timeInSeconds: number;
+    @Output() onDestroy: EventEmitter<any> = new EventEmitter<any>();
+
     public timer: ITimer;
     public myDate: String = new Date().toISOString();
  
@@ -24,6 +26,10 @@ export class TimerComponent {
  
     ngOnInit() {
         this.initTimer();
+    }
+
+    ngOnDestroy() {
+        this.onDestroy.emit(this.timer.secondsRemaining);
     }
  
     hasFinished() {
