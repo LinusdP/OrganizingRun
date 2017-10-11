@@ -14,7 +14,7 @@ import { TimingStructurePage } from '../pages/timing-structure/timing-structure'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = PlayersPage;
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, icon: string, component: any}>;
 

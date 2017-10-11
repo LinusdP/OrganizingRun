@@ -5,16 +5,71 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>TournamentDetail</ion-title>
+    <ion-title>{{selectedTournament.title}} (<time>{{selectedTournament.date}}</time>)</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
-  <h3>{{selectedTournament.title}}</h3>
-  <time>{{selectedTournament.date}}</time>
-  <p>{{selectedTournament.description}}</p>
+  <div padding>
+    <ion-segment [(ngModel)]="section">
+      <ion-segment-button value="players">
+        Players
+      </ion-segment-button>
+      <ion-segment-button value="matchups">
+        Matchups
+      </ion-segment-button>
+      <ion-segment-button value="timer">
+        Match timer
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="section">
+    <ion-list *ngSwitchCase="'players'">
+      <ion-list-header>Players</ion-list-header>
+      <ion-grid>    
+        <ion-row *ngFor="let tPlayer of tournamentPlayers">
+          <ion-col col-2>
+              <ion-input type="text" value="{{tPlayer.firstName}}" placeholder="Firstname"></ion-input>
+          </ion-col>
+          <ion-col col-2>
+              <ion-input type="text" value="{{tPlayer.lastName}}" placeholder="Surename"></ion-input>
+          </ion-col>
+          <ion-col col-1>
+              <ion-input type="text" value="{{tPlayer.nickName}}" placeholder="Nickname"></ion-input>
+          </ion-col>
+          <ion-col col-3>
+              <ion-select [(ngModel)]="tPlayer.runnerID" class="identity-select" interface="popover" placeholder="- Runner -">
+                <ion-option [value]="identity.code" *ngFor="let identity of cardService.getRunnerIdentities()">{{identity.title}}</ion-option>
+              </ion-select>
+          </ion-col>
+          <ion-col col-3>
+              <ion-select [(ngModel)]="tPlayer.corpID" class="identity-select" interface="popover" placeholder="- Corp -">
+                <ion-option [value]="identity.code" *ngFor="let identity of cardService.getCorpIdentities()">{{identity.title}}</ion-option>
+              </ion-select>
+          </ion-col>
+          <ion-col col-1>
+              <button ion-button round color="danger" (click)="deletePlayer(tPlayer)"><ion-icon name="trash"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12><button ion-button color="secondary" (click)='addPlayer()'><ion-icon name="add"></ion-icon></button></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+      
+    <ion-list *ngSwitchCase="'matchups'">
+      <ion-item>
+        <h2>Luna</h2>
+      </ion-item>
+    </ion-list>
+
+    <div *ngSwitchCase="'timer'">
+      <timer #timer timeInSeconds="3600"></timer>
+    </div>
+
+  </div>
+
 </ion-content>

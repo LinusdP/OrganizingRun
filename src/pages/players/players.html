@@ -15,37 +15,5 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-list-header>Players</ion-list-header>
-    <ion-grid>    
-      <ion-row *ngFor="let tPlayer of tournamentPlayers">
-        <ion-col col-2>
-            <ion-input type="text" value="{{tPlayer.firstName}}" placeholder="Firstname"></ion-input>
-        </ion-col>
-        <ion-col col-2>
-            <ion-input type="text" value="{{tPlayer.lastName}}" placeholder="Surename"></ion-input>
-        </ion-col>
-        <ion-col col-1>
-            <ion-input type="text" value="{{tPlayer.nickName}}" placeholder="Nickname"></ion-input>
-        </ion-col>
-        <ion-col col-3>
-            <ion-select [(ngModel)]="tPlayer.runnerID" class="identity-select" interface="popover" placeholder="- Runner -">
-              <ion-option [value]="identity.code" *ngFor="let identity of cardService.getRunnerIdentities()">{{identity.title}}</ion-option>
-            </ion-select>
-        </ion-col>
-        <ion-col col-3>
-            <ion-select [(ngModel)]="tPlayer.corpID" class="identity-select" interface="popover" placeholder="- Corp -">
-              <ion-option [value]="identity.code" *ngFor="let identity of cardService.getCorpIdentities()">{{identity.title}}</ion-option>
-            </ion-select>
-        </ion-col>
-        <ion-col col-1>
-            <button ion-button round color="danger" (click)="deletePlayer(tPlayer)"><ion-icon name="trash"></ion-icon></button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12><button ion-button color="secondary" (click)='addPlayer()'><ion-icon name="add"></ion-icon></button></ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-list>
-
+<h3>let's make another view here...</h3>>
 </ion-content>
