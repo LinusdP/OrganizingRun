@@ -25,6 +25,16 @@ export class PlayersPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.database = new PouchDB('nr_global_players');
     console.log(this.database);
+    let options = {
+      live: true,
+      retry: true,
+      continuous: true
+    };  
+    this.database.sync('http://localhost:5984/nr_global_players', options)
+      .on('error', error => {
+        console.error(JSON.stringify(error));
+    });
+
   }
 
   ionViewDidLoad() {
