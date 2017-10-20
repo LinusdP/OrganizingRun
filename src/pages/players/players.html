@@ -15,5 +15,14 @@
 
 
 <ion-content padding>
-<h3>let's make another view here...</h3>
+  <ion-list>
+    <ion-item *ngFor="let item of globalPlayers">
+      <ion-avatar item-start>
+        <img src="assets/img/t_casual.jpg">
+      </ion-avatar>
+      <h2>{{item.first_name}}</h2>
+      <h3>{{item.last_name}}</h3>
+      <p>{{item.player_id}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
