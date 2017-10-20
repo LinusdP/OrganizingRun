@@ -20,6 +20,7 @@ import{ Player } from '../tournament-detail/player';
 export class PlayersPage {
   private globalPlayers: any;
   private database: any;
+  data: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.database = new PouchDB('nr_global_players');
