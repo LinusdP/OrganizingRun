@@ -1,4 +1,4 @@
-export class Player {
+export class TPlayer {
     id: string;
     firstName: string;
     lastName: string;

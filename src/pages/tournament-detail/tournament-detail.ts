@@ -6,7 +6,7 @@ import { ViewChild } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { CardDataProvider } from '../../providers/card-data';
-import{ Player } from './player';
+import{ TPlayer } from './tplayer';
 import { TimerComponent } from '../../components/timer/timer';
 
 /**
@@ -53,7 +53,7 @@ export class TournamentDetailPage {
   }
 
   addPlayer(): void{
-    this.tournamentPlayers.push(new Player);
+    this.tournamentPlayers.push(new TPlayer);
   }
 
   deletePlayer(item){

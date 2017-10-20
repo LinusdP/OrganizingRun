@@ -18,10 +18,10 @@
   <ion-list>
     <ion-item *ngFor="let item of globalPlayers">
       <ion-avatar item-start>
-        <img src="assets/img/t_casual.jpg">
+        <img [src]="getAvatar(item.email)">
       </ion-avatar>
-      <h2>{{item.first_name}}</h2>
-      <h3>{{item.last_name}}</h3>
+      <h2>{{item.first_name}} {{item.last_name}}</h2>
+      <h3>{{item.email}}</h3>
       <p>{{item._id}}</p>
     </ion-item>
   </ion-list>

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import PouchDB from 'pouchdb';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import{ Player } from '../tournament-detail/player';
-
+import PouchDB from 'pouchdb';
+import {Md5} from 'ts-md5/dist/md5';
 /**
  * Generated class for the PlayersPage page.
  *
@@ -45,6 +44,12 @@ export class PlayersPage {
       console.log(this.globalPlayers);
     });
   }
+
+  getAvatar(email) {
+    let link = "https://www.gravatar.com/avatar/";
+    return link + Md5.hashStr(email);
+  }
+
   public allPlayers() {
     if (this.data) {
       return Promise.resolve(this.data);
