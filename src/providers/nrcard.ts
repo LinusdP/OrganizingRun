@@ -1,4 +1,6 @@
 export class NRCard {
+  _id?: string;
+  _rev?: string;
   advancement_cost?: number;
   agenda_points?: number;
   code: string;

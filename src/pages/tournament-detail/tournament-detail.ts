@@ -18,8 +18,7 @@ import { TimerComponent } from '../../components/timer/timer';
 
 @Component({
   selector: 'page-tournament-detail',
-  templateUrl: 'tournament-detail.html',
-  providers: [CardDataProvider]
+  templateUrl: 'tournament-detail.html'
 })
 
 export class TournamentDetailPage {

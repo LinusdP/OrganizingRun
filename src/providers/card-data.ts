@@ -3,6 +3,8 @@ import { Http } from '@angular/http';
 import PouchDB from 'pouchdb';
 import 'rxjs/add/operator/map';
 
+import { NRCard } from './nrcard';
+
 /*
   Generated class for the CardDataProvider provider.
 
@@ -15,10 +17,10 @@ export class CardDataProvider {
   private database: any;
   private listener: EventEmitter<any> = new EventEmitter();
 
-  cards: any;
+  cards: NRCard[];
   runner_identities: any;
   corp_identities: any;
-  netrunnerDBSync: any;
+  netrunnerDBSync: NRCard[];
 
   constructor(public http: Http) {
     console.log('Hello CardDataProvider Provider');
@@ -33,12 +35,11 @@ export class CardDataProvider {
       continuous: true
     };  
     this.database.sync('http://localhost:5984/nr_cards', options)
-      .on('change', change => {
-        this.listener.emit(change);
-    }).on('error', error => {
+      .on('error', error => {
         console.error(JSON.stringify(error));
     });
 
+    this.getCardDataFromNetrunnerDB();
   }
 
   public allCards() {
@@ -65,7 +66,8 @@ export class CardDataProvider {
         this.corp_identities = this.cards.filter(
           card => card.type_code == "identity" && card.side_code == "corp" && card.pack_code != "draft");
    
-        this.database.changes({live: true, since: 'now', include_docs: true}).on('change', (change) => {
+        //Set function to handle changes
+          this.database.changes({live: true, since: 'now', include_docs: true}).on('change', (change) => {
           this.handleChange(change);
         });
    
@@ -88,6 +90,8 @@ export class CardDataProvider {
   }
 
   handleChange(change){
+
+    console.log("Change event triggered!");
     
      let changedDoc = null;
      let changedIndex = null;
@@ -118,31 +122,42 @@ export class CardDataProvider {
    }
 
   /* Only used if/when syncing with NEtrunnerDB */
-  public putCard(id: string, document: any) {
-    document._id = id;
-    return this.getCard(id).then(result => {
-        document._rev = result._rev;
-        console.log(document);
-        return this.database.put(document);
-    }, error => {
-        if(error.status == "404") {
-            return this.database.put(document);
-        }
-        else {
-            return new Promise((resolve, reject) => {
-                reject(error);
-            });
-        }
+  public createCard(card){
+    this.database.post(card).catch((error) => {
+      console.log("Error creating card: " + card.code);
+    });
+  }
+  public updateCard(card) {
+    this.database.put(card).catch((error) => {
+      console.log("Error updating card: " + card.code);
     });
   }
 
   /* Only used if/when syncing with NetrunnerDB */
-  public deleteCard(id: string, rev: string) {
-    this.database.remove(id, rev);
+  public deleteCard(card) {
+    this.database.remove(card).catch((error) => {
+      console.log("Error deleting card: " + card.code);
+    });
   }
 
   public getChangeListener() {
     return this.listener;
+  }
+
+
+ /**NetrunnerDB functions */
+  syncCardsWithNetrunnerDB() {
+    console.log("Syncing cards...");
+    for(let card of this.netrunnerDBSync) {
+      if( !this.cards.find(item => item.code == card.code) ){
+        console.log("Couldn't find:");
+        console.log(card);
+        console.log("Adding to DB...");
+        card._id = card.code;
+        this.createCard(card);
+      }
+    }
+    console.log("Syncing finished...");
   }
 
   getCardDataFromNetrunnerDB(){
