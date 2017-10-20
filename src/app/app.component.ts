@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { TournamentPage } from '../pages/tournament/tournament';
 import { PlayersPage } from '../pages/players/players';
 import { TimingStructurePage } from '../pages/timing-structure/timing-structure';
+import { SettingsPage } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +28,8 @@ export class MyApp {
       { title: 'Tournaments', icon: 'trophy', component: TournamentPage },
       { title: 'Players', icon: 'people', component: PlayersPage },
       { title: 'Regions', icon: 'pin', component: TournamentPage },
-      { title: 'Timing Structure', icon: 'paper', component: TimingStructurePage }
+      { title: 'Timing Structure', icon: 'paper', component: TimingStructurePage },
+      { title: 'Settings', icon: 'settings', component: SettingsPage }
     ];
 
   }

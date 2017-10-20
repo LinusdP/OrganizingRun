@@ -13,6 +13,7 @@ import { TimingStructurePage } from '../pages/timing-structure/timing-structure'
 import { CorpTab } from '../pages/timing-structure/corp-tab';
 import { RunnerTab } from '../pages/timing-structure/runner-tab';
 import { RunTab } from '../pages/timing-structure/run-tab';
+import { SettingsPage } from '../pages/settings/settings';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -31,7 +32,8 @@ import { NrEventProvider } from '../providers/nr-event/nr-event';
     TimingStructurePage,
     CorpTab,
     RunnerTab,
-    RunTab
+    RunTab,
+    SettingsPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { NrEventProvider } from '../providers/nr-event/nr-event';
     TimingStructurePage,
     CorpTab,
     RunnerTab,
-    RunTab
+    RunTab,
+    SettingsPage
   ],
   providers: [
     StatusBar,
