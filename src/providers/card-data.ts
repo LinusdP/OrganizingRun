@@ -34,7 +34,7 @@ export class CardDataProvider {
       retry: true,
       continuous: true
     };  
-    this.database.sync('http://localhost:5984/nr_cards', options)
+    this.database.sync('http://ldpholistic.se:5984/nr_cards', options)
       .on('error', error => {
         console.error(JSON.stringify(error));
     });

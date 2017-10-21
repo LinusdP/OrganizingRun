@@ -29,7 +29,7 @@ export class PlayersPage {
       retry: true,
       continuous: true
     };  
-    this.database.sync('http://localhost:5984/nr_global_players', options)
+    this.database.sync('http://ldpholistic.se:5984/nr_global_players', options)
       .on('error', error => {
         console.error(JSON.stringify(error));
     });

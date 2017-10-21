@@ -27,7 +27,7 @@ export class NrEventProvider {
       retry: true,
       continuous: true
     };  
-    this.database.sync('http://localhost:5984/nr_events', options)
+    this.database.sync('http://ldpholistic.se:5984/nr_events', options)
       .on('change', change => {
         this.listener.emit(change);
     }).on('error', error => {
