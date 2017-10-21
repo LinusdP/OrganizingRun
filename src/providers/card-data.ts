@@ -43,11 +43,11 @@ export class CardDataProvider {
   }
 
   public allCards() {
-    
+
     if (this.cards) {
       return Promise.resolve(this.cards);
     }
-   
+
     return new Promise(resolve => {
       this.database.allDocs({
         include_docs: true
@@ -56,7 +56,7 @@ export class CardDataProvider {
         let docs = result.rows.map((row) => {
           this.cards.push(row.doc);
         });
-   
+
         resolve(this.cards);
 
         //Filter out identities and store separately in runner or corp array.
@@ -65,12 +65,18 @@ export class CardDataProvider {
           card => card.type_code == "identity" && card.side_code == "runner" && card.pack_code != "draft");
         this.corp_identities = this.cards.filter(
           card => card.type_code == "identity" && card.side_code == "corp" && card.pack_code != "draft");
-   
+
         //Set function to handle changes
           this.database.changes({live: true, since: 'now', include_docs: true}).on('change', (change) => {
           this.handleChange(change);
+          //Sort the runner cards
+          console.log("sup?");
+          this.runner_identities.sort(function(a, b){
+            return a.title > b.title ? 1: a.title < b.title? -1: 0;
+          });
+          console.log(this.runner_identities);
         });
-   
+
       }).catch((error) => {
         console.log(error);
       });
@@ -92,19 +98,19 @@ export class CardDataProvider {
   handleChange(change){
 
     console.log("Change event triggered!");
-    
+
      let changedDoc = null;
      let changedIndex = null;
-    
+
      this.cards.forEach((doc, index) => {
-    
+
        if(doc._id === change.id){
          changedDoc = doc;
          changedIndex = index;
        }
-    
+
      });
-    
+
      //A document was deleted
      if(change.deleted){
        this.cards.splice(changedIndex, 1);
@@ -164,7 +170,7 @@ export class CardDataProvider {
     console.log("Trying to get the data (card-data.ts)");
     if (this.netrunnerDBSync) {
       // already loaded data
-      console.log("there seems to be data already (card-data.ts line 23)");
+      console.log("there seems to be data already");
       return Promise.resolve(this.netrunnerDBSync);
     }
     return new Promise(resolve =>{
