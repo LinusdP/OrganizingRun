@@ -6,6 +6,7 @@ import { ViewChild } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { CardDataProvider } from '../../providers/card-data';
+import { NrEventProvider } from '../../providers/nr-event/nr-event';
 import{ TPlayer } from './tplayer';
 import { TimerComponent } from '../../components/timer/timer';
 
@@ -28,13 +29,11 @@ export class TournamentDetailPage {
   selectedTournament: any;
   section: string = "players";
   allCards: any;
-  tournamentPlayers: any;
   timerSeconds: number = 3600;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public cardService: CardDataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public eventService: NrEventProvider, public cardService: CardDataProvider) {
     // We should be here by navigation with a tournamentId
     this.selectedTournament = navParams.get('item');
-    this.tournamentPlayers = [{id: "2", firstName: 'Roger', lastName: 'Tónlist', nickName: "aglet", runnerID: "01001", corpID: "01067" }];
   }
 
   ionViewDidLoad() {
@@ -42,24 +41,27 @@ export class TournamentDetailPage {
     console.log('ionViewDidLoad TournamentDetailPage');
   }
 
+  ngOnDestroy() {
+    this.eventService.updateEvent(this.selectedTournament);
+  }
+
+
   loadAllCards(){
     this.cardService.allCards()
       .then(data => {
         this.allCards = data;
-        console.log("I have gotten cards (player.ts)")
-        console.log(this.allCards);
-        console.log(this.cardService.getRunnerIdentities());
+        console.log("Loaded.")
       });
   }
 
   addPlayer(): void{
-    this.tournamentPlayers.push(new TPlayer);
+    this.selectedTournament.players.push(new TPlayer);
   }
 
   deletePlayer(item){
-    var index = this.tournamentPlayers.indexOf(item, 0);
+    var index = this.selectedTournament.players.indexOf(item, 0);
     if (index > -1) {
-       this.tournamentPlayers.splice(index, 1);
+      this.selectedTournament.players.splice(index, 1);
     }
   }
 

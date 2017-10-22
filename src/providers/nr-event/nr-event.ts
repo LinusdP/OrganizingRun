@@ -97,26 +97,22 @@ export class NrEventProvider {
      }
    }
 
-  public putEvent(id: string, document: any) {
-    document._id = id;
-    return this.getEvent(id).then(result => {
-        document._rev = result._rev;
-        console.log(document);
-        return this.database.put(document);
-    }, error => {
-        if(error.status == "404") {
-            return this.database.put(document);
-        }
-        else {
-            return new Promise((resolve, reject) => {
-                reject(error);
-            });
-        }
+   public createEvent(event){
+    this.database.post(event).catch((error) => {
+      console.log("Error creating event: " + event.code);
+    });
+  }
+  public updateEvent(event) {
+    this.database.put(event).catch((error) => {
+      console.log("Error updating event: " + event.code);
     });
   }
 
-  public deleteEvent(id: string, rev: string) {
-    this.database.remove(id, rev);
+  /* Only used if/when syncing with NetrunnerDB */
+  public deleteCard(event) {
+    this.database.remove(event).catch((error) => {
+      console.log("Error deleting event: " + event.code);
+    });
   }
 
   public getChangeListener() {

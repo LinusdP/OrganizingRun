@@ -30,15 +30,15 @@
     <ion-list *ngSwitchCase="'players'">
       <ion-list-header>Players</ion-list-header>
       <ion-grid>    
-        <ion-row *ngFor="let tPlayer of tournamentPlayers">
+        <ion-row *ngFor="let tPlayer of selectedTournament.players">
           <ion-col col-2>
-              <ion-input type="text" value="{{tPlayer.firstName}}" placeholder="Firstname"></ion-input>
+              <ion-input [(ngModel)]="tPlayer.firstName" type="text" value="{{tPlayer.firstName}}" placeholder="Firstname"></ion-input>
           </ion-col>
           <ion-col col-2>
-              <ion-input type="text" value="{{tPlayer.lastName}}" placeholder="Surename"></ion-input>
+              <ion-input [(ngModel)]="tPlayer.lastName" type="text" value="{{tPlayer.lastName}}" placeholder="Surename"></ion-input>
           </ion-col>
           <ion-col col-1>
-              <ion-input type="text" value="{{tPlayer.nickName}}" placeholder="Nickname"></ion-input>
+              <ion-input [(ngModel)]="tPlayer.nickName" type="text" value="{{tPlayer.nickName}}" placeholder="Nickname"></ion-input>
           </ion-col>
           <ion-col col-3>
               <ion-select [(ngModel)]="tPlayer.runnerID" class="identity-select" interface="popover" placeholder="- Runner -">
