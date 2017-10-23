@@ -21,8 +21,15 @@
         <img [src]="getAvatar(item.email)">
       </ion-avatar>
       <h2>{{item.first_name}} {{item.last_name}}</h2>
-      <h3>{{item.email}}</h3>
-      <p>{{item._id}} <ion-icon name="anr-Jinteki-Simple"></ion-icon></p>
+      <p>
+        ({{item.email}}) {{item._id}} <ion-icon name="anr-Jinteki-Simple"></ion-icon>
+        <br>
+          <button ion-button outline round color="primary" (click)="presentEditModal(item)"><ion-icon name="create"></ion-icon></button>
+          <button ion-button outline round color="danger" (click)="deletePlayer(item)"><ion-icon name="trash"></ion-icon></button>
+      </p>
     </ion-item>
+    <ion-fab bottom right>
+        <button ion-fab color="secondary" (click)='addPlayer()'><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
   </ion-list>
 </ion-content>

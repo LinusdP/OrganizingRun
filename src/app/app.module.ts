@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TournamentPage } from '../pages/tournament/tournament';
 import { PlayersPage } from '../pages/players/players';
+import { EditPlayerModal } from '../pages/players/players';
 import { TournamentDetailPage } from '../pages/tournament-detail/tournament-detail';
 import { TimerComponent } from '../components/timer/timer';
 import { TimingStructurePage } from '../pages/timing-structure/timing-structure';
@@ -33,7 +34,8 @@ import { NrEventProvider } from '../providers/nr-event/nr-event';
     CorpTab,
     RunnerTab,
     RunTab,
-    SettingsPage
+    SettingsPage,
+    EditPlayerModal
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { NrEventProvider } from '../providers/nr-event/nr-event';
     CorpTab,
     RunnerTab,
     RunTab,
-    SettingsPage
+    SettingsPage,
+    EditPlayerModal
   ],
   providers: [
     StatusBar,
