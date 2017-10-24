@@ -55,15 +55,41 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col col-12><button ion-button color="secondary" (click)='addPlayer()'><ion-icon name="add"></ion-icon></button></ion-col>
+          <ion-col col-12><button ion-button color="secondary" (click)='addConfirm()'><ion-icon name="add"></ion-icon></button></ion-col>
         </ion-row>
       </ion-grid>
+      <ion-fab right *ngIf="selectedTournament.players.length > 1">
+        <button *ngIf="!tournamentStarted" ion-button color="primary" (click)="startTournament()">Start tournament</button>
+      </ion-fab>
     </ion-list>
       
     <ion-list *ngSwitchCase="'matches'">
-      <ion-item>
-        <h2>Luna</h2>
-      </ion-item>
+      <button *ngIf="!tournamentStarted" ion-button color="primary" (click)="startTournament()">Start tournament</button>
+      <ion-grid *ngIf="tournamentStarted">
+        <ion-row *ngFor="let tPlayer of selectedTournament.players">
+          <ion-col col-2>
+              {{tPlayer.firstName}} {{tPlayer.lastName}}
+          </ion-col>
+          <ion-col col-1>
+              {{tPlayer.nickName}}
+          </ion-col>
+          <ion-col col-3>
+              {{tPlayer.runnerID}}
+          </ion-col>
+          <ion-col col-3>
+              {{tPlayer.corpID}}
+          </ion-col>
+          <ion-col col-1>
+              SoS
+          </ion-col>
+          <ion-col col-1>
+              xSos
+          </ion-col>
+          <ion-col col-1>
+              Points
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-list>
 
     <div *ngSwitchCase="'timer'">

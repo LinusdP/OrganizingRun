@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 
 //import { NRCard } from '../../providers/nrcard';
@@ -30,8 +30,10 @@ export class TournamentDetailPage {
   section: string = "players";
   allCards: any;
   timerSeconds: number = 3600;
+  tournamentStarted: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public eventService: NrEventProvider, public cardService: CardDataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public eventService: NrEventProvider,
+              public cardService: CardDataProvider, public alertCtrl: AlertController) {
     // We should be here by navigation with a tournamentId
     this.selectedTournament = navParams.get('item');
   }
@@ -45,6 +47,46 @@ export class TournamentDetailPage {
     this.eventService.updateEvent(this.selectedTournament);
   }
 
+  /** Player add confirmation alert */
+  addConfirm() {
+    //If tournament is not started, just go ahead and add a new player
+    if(!this.tournamentStarted){
+      this.addPlayer();
+      return;
+    }
+    //If tournament is started...ask what to do and handle an eventual add
+    const alert = this.alertCtrl.create({
+      title: 'Confirm player add',
+      message: 'Tournament is already started. Adding a new player will automatically assign one bye per started round to the new player.',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('No clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.addPlayer();
+            this.latePlayerAdd();
+            console.log('Yes clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  latePlayerAdd() {
+    //TODO: fix late player add by assigning byes etc.
+  }
+
+  startTournament() {
+    //Todo: start tournament
+    this.tournamentStarted = true;
+  }
 
   loadAllCards(){
     this.cardService.allCards()
